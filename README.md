@@ -57,8 +57,8 @@ However, be sure to supply command line arguments to the input JSON file, like s
 
 The remaining configurations and compositional properties are defined within that JSON file.
 
-How to create the environment properties
-----------------------------------------
+How to setup the environment properties
+---------------------------------------
 
 The JSON (JavaScript Object Notation) looks like follows, note that only the tempo and note properties are REQUIRED:
 
@@ -74,7 +74,7 @@ The JSON (JavaScript Object Notation) looks like follows, note that only the tem
     }
 
 If you are unfamiliar with the JSON format, you can stick to changing the numerical values with any other numerical value
-you like, but be sure that "timeSignature", "startOctave" and "endOctave" will only accept round numbers.
+you like, but be sure that "timeSignature", "startOctave" and "endOctave" will only accept rounded values.
 
 You can alter the time signature to any exotic meter of your liking, the first number is the upper numeral in
 a time signature, e.g. the "3" in 3/4, while the second number is the lower numeral, e.g. the "4" in 3/4.

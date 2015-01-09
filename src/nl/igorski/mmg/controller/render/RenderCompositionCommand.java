@@ -46,9 +46,7 @@ public final class RenderCompositionCommand
     {
         // calculate some constants
         final float theTempo      = Config.TEMPO; // in BPM
-        final long songLengthInMs = 5000; // TODO
         final int channel         = 0;
-        final int drumChannel     = 10;
 
         // create the MIDI track for the tempo and time signature
 
@@ -89,7 +87,7 @@ public final class RenderCompositionCommand
         Vector<VONote> notes       = new Vector<VONote>();
 
         // create patterns from all available pitches
-        int addedNotes = 0;
+
         VOPattern currentPattern = new VOPattern( notes, 0, currentPosition );
 
         for ( final double pitch : Config.pitches )
