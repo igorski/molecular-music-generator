@@ -24,20 +24,27 @@
 package nl.igorski.mmg.controller.startup;
 
 import nl.igorski.mmg.config.Config;
-import nl.igorski.mmg.definitions.Parameters;
 import nl.igorski.mmg.utils.Output;
 
 public final class StartupCommand
 {
     public static boolean execute( String[] arguments )
     {
+        /* // OLD : multi line arguments
         for ( final String arg : arguments )
         {
             if ( containsArgument( arg, Parameters.INPUT_FILENAME ))
                 Config.INPUT_FILENAME = getArgumentValue( arg, Parameters.INPUT_FILENAME );
 
-            if ( containsArgument( arg, Parameters.OUTPUT_FILENAME ))
-                Config.OUTPUT_FILENAME = getArgumentValue( arg, Parameters.OUTPUT_FILENAME );
+        }
+        */
+
+        // the only accepted argument is the input filename, the validation
+        // occurs in the ReadConfigurationCommand
+
+        if ( arguments.length > 0 )
+        {
+            Config.INPUT_FILENAME = arguments[ 0 ];
         }
 
         // only input filename is required

@@ -42,22 +42,16 @@ public final class CalculatePitchCommand
 
         int noteIndex = 0, maxIndex = SCALE.length - 1, octave = Config.MIN_OCTAVE;
 
-        for ( int i = 0; i < SCALE.length; ++i )
-        {
-            if ( SCALE[ i ].equals( startNote )) {
-               noteIndex = i;
-               break;
-            }
-        }
-
         for ( int i = noteIndex, l = SCALE.length; i < l; ++i )
         {
             Config.pitches.add( Pitch.note( SCALE[ i ], octave ));
 
+            // reached end of the note list ? increment octave
+
             if ( i == maxIndex &&
                  octave < Config.MAX_OCTAVE )
             {
-                i = -1; // will be incremented by for to 0
+                i = -1; // will be incremented to 0 by loop
                 ++octave;
             }
         }

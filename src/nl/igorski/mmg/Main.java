@@ -28,19 +28,12 @@ import nl.igorski.mmg.controller.render.RenderCompositionCommand;
 import nl.igorski.mmg.controller.startup.CalculatePitchCommand;
 import nl.igorski.mmg.controller.config.ReadConfigurationCommand;
 import nl.igorski.mmg.controller.startup.StartupCommand;
-import nl.igorski.mmg.definitions.Parameters;
 import nl.igorski.mmg.utils.Output;
 
 public class Main
 {
     public static void main( String[] args )
     {
-        if ( args.length == 0 )
-        {
-            Parameters.showSupportedParameters();
-            return;
-        }
-
         // process command line arguments
 
         if ( StartupCommand.execute( args ))

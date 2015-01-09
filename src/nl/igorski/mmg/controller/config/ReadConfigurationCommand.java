@@ -98,7 +98,10 @@ public final class ReadConfigurationCommand
 
             // additional configurations
             if ( hasProperty( json, JSONProperties.TRACK_PER_PATTERN ))
-                Config.UNIQUE_TRACK_PER_PATTERN = getBoolean(json, JSONProperties.TRACK_PER_PATTERN);
+                Config.UNIQUE_TRACK_PER_PATTERN = getBoolean( json, JSONProperties.TRACK_PER_PATTERN );
+
+            if ( hasProperty( json, JSONProperties.OUTPUT_FILENAME ))
+                Config.OUTPUT_FILENAME = getString( json, JSONProperties.OUTPUT_FILENAME );
 
             return true;
         }
@@ -171,6 +174,19 @@ public final class ReadConfigurationCommand
     private static boolean getBoolean( JSONObject json, String propertyName )
     {
         return ( Boolean ) json.get( propertyName );
+    }
+
+    /**
+     * retrieves a String value stored in
+     * key propertyName from given JSONObject json
+     *
+     * @param {JSONObject} jsonValue
+     * @param {String}     propertyName
+     * @return {String}
+     */
+    private static String getString( JSONObject json, String propertyName )
+    {
+        return getString( json.get( propertyName ));
     }
 
     private static String getString( Object value )

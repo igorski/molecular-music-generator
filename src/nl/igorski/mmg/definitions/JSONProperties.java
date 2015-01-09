@@ -36,4 +36,5 @@ public final class JSONProperties
     public static String TIME_SIGNATURE    = "timeSignature";   // optional, Array of two integers
     public static String MIN_OCTAVE        = "minOctave";       // optional, integer value
     public static String MAX_OCTAVE        = "maxOctave";       // optional, integer value
+    public static String OUTPUT_FILENAME   = "outputFile";      // optional, String value
 }

@@ -10,7 +10,8 @@ The algorithm is based on "the Molecular Music Box" by Duncan Lockerby.
 The rules for the algorithm are as follows :
 
  * two different note lengths need to be defined, e.g. "4" and "3"
- * a scale needs to be defined, e.g. C major (the white keys on a piano), let's say we start on the E note
+ * a scale needs to be defined, e.g. C major (the white keys on a piano), let's say we start on the E note, the list of
+   notes will then contain : E, F, G, A, B, C
  * a pattern length needs to be defined, e.g. 4 bars
 
 The algorithm will then function like so (keeping the above definitions in mind) :
@@ -50,13 +51,11 @@ MMG is a command line util, and requires a Java Runtime Environment, you can sta
 
     java -jar mmg.jar
 
-However be sure to supply command line arguments to the input JSON file, like so:
+However, be sure to supply command line arguments to the input JSON file, like so:
 
-    java -jar mmg.jar -i{path/to/input.json}
+    java -jar mmg.jar path/to/input.json
 
-And you can optionally specify the output file name (defaults to "output.mid"), like so:
-
-    java -jar mmg.jar -i{path/to/input.json} -o{path/to/generated/output.mid}
+The remaining configurations and compositional properties are defined within that JSON file.
 
 How to create the environment properties
 ----------------------------------------
@@ -70,7 +69,8 @@ The JSON (JavaScript Object Notation) looks like follows, note that only the tem
         "minOctave"       : 2,
         "maxOctave"       : 6,
         "scale"           : [ "E", "F", "G", "A", "B", "C", "D" ],
-        "trackPerPattern" : false
+        "trackPerPattern" : false,
+        "outputFile"      : "output.mid"
     }
 
 If you are unfamiliar with the JSON format, you can stick to changing the numerical values with any other numerical value
@@ -89,3 +89,5 @@ etc. Note that the scale will be repeated over the determined octave range. You 
 
 "trackPerPattern" can be either 'true' or 'false'. When true, the resulting .MIDI file will have a unique MIDI track for
 each new pattern, when false, all the patterns are part of the same MIDI track.
+
+"outputFile" describes the name of the generated MIDI file.
