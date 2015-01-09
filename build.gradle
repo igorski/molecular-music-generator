@@ -1,0 +1,60 @@
+import org.ajoberstar.grgit.*
+apply plugin: 'java'
+
+defaultTasks 'clean', 'build'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.ajoberstar:gradle-git:0.8.0'
+        classpath fileTree(dir: '../../build/libs')
+
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            srcDir 'libs/android-midi-lib/src'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    runtime 'com.googlecode.json-simple:json-simple:1.1.1'
+}
+
+jar {
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+        configurations.runtime.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    manifest {
+        attributes 'Main-Class' : 'nl.igorski.mmg.Main',
+                   'Built-By'   : System.getProperty( 'user.name' ),
+                   'Built-Date' : new Date(),
+                   'Built-JDK'  : System.getProperty( 'java.version' )
+    }
+    baseName = 'mmg'
+}
+
+task midi {
+    File dir = new File('libs/android-midi-lib')
+    if (!dir.exists()) {
+        def grgit = Grgit.clone( dir: dir, uri: 'https://github.com/LeffelMania/android-midi-lib.git' )
+    }
+}
+
+compileJava.dependsOn midi
