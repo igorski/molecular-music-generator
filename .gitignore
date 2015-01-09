@@ -1,6 +1,7 @@
 .DS_Store
 Thumbs.db
-*.idea
+.idea
+.iml
 intelliJ project/
 .gradle
 build/
