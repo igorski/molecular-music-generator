@@ -27,18 +27,14 @@ import nl.igorski.mmg.config.Config;
 import nl.igorski.mmg.definitions.Pitch;
 
 /**
- * Created with IntelliJ IDEA.
- * User: igorzinken
- * Date: 06-01-15
- * Time: 20:38
- * To change this template use File | Settings | File Templates.
+ * CalculatePitchCommand will take the given musical scale and
+ * create all pitches (in Hz) for the scale within the given octave range
  */
 public final class CalculatePitchCommand
 {
     public static void execute()
     {
         final String[] SCALE   = Config.SCALE;
-        final String startNote = SCALE[ 0 ];
 
         int noteIndex = 0, maxIndex = SCALE.length - 1, octave = Config.MIN_OCTAVE;
 

@@ -38,7 +38,8 @@ public final class Config
 
     public static float NOTE1_LENGTH               = 4f;
     public static float NOTE2_LENGTH               = 3f;
-    public static int   LOOP_LENGTH_IN_BARS        = 4;
+    public static int   PATTERN_LENGTH_IN_BARS     = 4;
+    public static int   AMOUNT_OF_PATTERNS         = 4;
     public static int   MIN_OCTAVE                 = 2;
     public static int   MAX_OCTAVE                 = 3;
     public static String[] SCALE                   = { "E", "F", "G", "A", "B", "C", "D" }; // C major starting on E

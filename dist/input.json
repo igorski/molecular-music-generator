@@ -1,10 +1,12 @@
 {
-    "tempo"           : 165.0,
-    "lengths"         : [ 4, 3 ],
-    "timeSignature"   : [ 4, 4 ],
-    "minOctave"       : 2,
-    "maxOctave"       : 6,
-    "scale"           : [ "C", "D", "E", "F", "G", "A", "B" ],
-    "trackPerPattern" : false,
-    "outputFile"      : "output.mid"
+    "tempo"             : 165.0,
+    "lengths"           : [ 4, 3 ],
+    "patternLength"     : 4,
+    "amountOfPatterns"  : 8,
+    "timeSignature"     : [ 4, 4 ],
+    "minOctave"         : 2,
+    "maxOctave"         : 7,
+    "scale"             : [ "C", "D", "E", "F", "G", "A", "B" ],
+    "trackPerPattern"   : false,
+    "outputFile"        : "output.mid"
 }

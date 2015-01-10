@@ -29,12 +29,14 @@ package nl.igorski.mmg.definitions;
  */
 public final class JSONProperties
 {
-    public static String TEMPO             = "tempo";           // floating point value
-    public static String NOTE_LENGTHS      = "lengths";         // Array of two floating point values
-    public static String TRACK_PER_PATTERN = "trackPerPattern"; // optional, boolean
-    public static String MUSICAL_SCALE     = "scale";           // optional, Array of Strings
-    public static String TIME_SIGNATURE    = "timeSignature";   // optional, Array of two integers
-    public static String MIN_OCTAVE        = "minOctave";       // optional, integer value
-    public static String MAX_OCTAVE        = "maxOctave";       // optional, integer value
-    public static String OUTPUT_FILENAME   = "outputFile";      // optional, String value
+    public static String TEMPO              = "tempo";            // floating point value
+    public static String NOTE_LENGTHS       = "lengths";          // Array of two floating point values
+    public static String PATTERN_LENGTH     = "patternLength";    // integer value
+    public static String AMOUNT_OF_PATTERNS = "amountOfPatterns"; // integer value
+    public static String TRACK_PER_PATTERN  = "trackPerPattern";  // optional, boolean
+    public static String MUSICAL_SCALE      = "scale";            // optional, Array of Strings
+    public static String TIME_SIGNATURE     = "timeSignature";    // optional, Array of two integers
+    public static String MIN_OCTAVE         = "minOctave";        // optional, integer value
+    public static String MAX_OCTAVE         = "maxOctave";        // optional, integer value
+    public static String OUTPUT_FILENAME    = "outputFile";       // optional, String value
 }

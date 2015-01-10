@@ -59,6 +59,15 @@ public final class ReadConfigurationCommand
                 return false;
             }
 
+            // same goes for patter length and amount of patterns
+
+            if ( !hasProperty( json, JSONProperties.AMOUNT_OF_PATTERNS ) ||
+                 !hasProperty( json, JSONProperties.PATTERN_LENGTH ))
+            {
+                Output.print( Config.INPUT_FILENAME + " contained no pattern length or has an undefined pattern amount" );
+                return false;
+            }
+
             // tempo
             Config.TEMPO = getFloat( json.get( JSONProperties.TEMPO ));
 
@@ -67,6 +76,10 @@ public final class ReadConfigurationCommand
 
             Config.NOTE1_LENGTH = getFloat( lengths.get( 0 ));
             Config.NOTE2_LENGTH = getFloat( lengths.get( 1 ));
+
+            // patterns
+            Config.AMOUNT_OF_PATTERNS     = getInteger( json, JSONProperties.AMOUNT_OF_PATTERNS );
+            Config.PATTERN_LENGTH_IN_BARS = getInteger( json, JSONProperties.PATTERN_LENGTH );
 
             // meter
 

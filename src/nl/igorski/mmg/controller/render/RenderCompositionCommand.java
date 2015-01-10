@@ -38,6 +38,7 @@ import nl.igorski.mmg.utils.Output;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Vector;
 
 public final class RenderCompositionCommand
@@ -90,9 +91,9 @@ public final class RenderCompositionCommand
 
         VOPattern currentPattern = new VOPattern( notes, 0, currentPosition );
 
-        for ( final double pitch : Config.pitches )
+        for ( int i = 0, l = Config.pitches.size(); i < l; ++i )
         {
-            // create new note
+            final double pitch = Config.pitches.get( i );
 
             // swap note length if conflicts with previously added note in other pattern
 
@@ -104,6 +105,9 @@ public final class RenderCompositionCommand
                 else
                     noteLength = Config.NOTE1_LENGTH;
             }
+
+            // create new note
+
             final VONote note = new VONote( Pitch.frequencyToMIDINote( pitch ),
                                             currentPosition,
                                           ( long )( noteLength * MIDI.QUARTER_NOTE ));
@@ -119,7 +123,7 @@ public final class RenderCompositionCommand
 
             // pattern switch ? make it so (this starts the interleaving of the notes and thus, the magic!)
 
-            if (( currentBarLength / MIDI.WHOLE_NOTE ) >= Config.LOOP_LENGTH_IN_BARS )
+            if (( currentBarLength / MIDI.WHOLE_NOTE ) >= Config.PATTERN_LENGTH_IN_BARS )
             {
                 patterns.add( currentPattern );
 
@@ -128,6 +132,20 @@ public final class RenderCompositionCommand
                 currentPattern = new VOPattern( notes, patterns.size(), currentPosition );
 
                 currentBarLength = 0l;
+            }
+
+            // break the loop when we've rendered the desired amount of patterns
+
+            if ( patterns.size() >= Config.AMOUNT_OF_PATTERNS )
+                break;
+
+            // if we have reached the end of the pitch range, start again
+            // from the beginning until we have rendered all the patterns
+
+            if ( i == ( l - 1 ))
+            {
+                Collections.reverse( Config.pitches ); // go down the scale
+                i = -1;
             }
         }
 
@@ -180,7 +198,8 @@ public final class RenderCompositionCommand
         for ( final VOPattern pattern : patterns )
         {
             if ( pattern.notes.size() > 0 &&
-                 pattern.offsetConflictsWithPattern( noteOffset )) {
+                 pattern.offsetConflictsWithPattern( noteOffset ))
+            {
                 return true;
             }
         }

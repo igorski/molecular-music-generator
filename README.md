@@ -60,21 +60,30 @@ The remaining configurations and compositional properties are defined within tha
 How to setup the environment properties
 ---------------------------------------
 
-The JSON (JavaScript Object Notation) looks like follows, note that only the tempo and note properties are REQUIRED:
+The JSON (JavaScript Object Notation) looks like the following, note that "tempo", "lengths", "patternLength" and
+"amountOfPatterns" are required and cannot be undefined. Note there is a sample input.json file in the /dist-folder.
 
     {
-        "tempo"           : 120.0,
-        "lengths"         : [ 4, 3 ],
-        "timeSignature"   : [ 4, 4 ],
-        "minOctave"       : 2,
-        "maxOctave"       : 6,
-        "scale"           : [ "E", "F", "G", "A", "B", "C", "D" ],
-        "trackPerPattern" : false,
-        "outputFile"      : "output.mid"
+        "tempo"             : 165.0,
+        "lengths"           : [ 4, 3 ],
+        "patternLength"     : 4,
+        "amountOfPatterns"  : 8,
+        "timeSignature"     : [ 4, 4 ],
+        "minOctave"         : 2,
+        "maxOctave"         : 7,
+        "scale"             : [ "C", "D", "E", "F", "G", "A", "B" ],
+        "trackPerPattern"   : false,
+        "outputFile"        : "output.mid"
     }
 
 If you are unfamiliar with the JSON format, you can stick to changing the numerical values with any other numerical value
-you like, but be sure that "timeSignature", "startOctave" and "endOctave" will only accept rounded values.
+you like, but be sure that "patternLength", "amountOfPatterns", "timeSignature", "startOctave" and "endOctave" will only
+accept rounded values.
+
+"lengths" is a list of two notes that describes the alternate note length/duration to use in the composition.
+"patternLength" describes the length of a single pattern (in measures). Once the generator has generated notes
+for the given amount of measures, a new pattern will be created, this process will repeat itself until "amountOfPatterns"
+has been reached. A configuration with a patternLength of 4 and amountOfPatterns of 8 will result in 32 measures of music.
 
 You can alter the time signature to any exotic meter of your liking, the first number is the upper numeral in
 a time signature, e.g. the "3" in 3/4, while the second number is the lower numeral, e.g. the "4" in 3/4.
@@ -88,6 +97,7 @@ etc. Note that the scale will be repeated over the determined octave range. You 
 "Eb", "F#", etc.
 
 "trackPerPattern" can be either 'true' or 'false'. When true, the resulting .MIDI file will have a unique MIDI track for
-each new pattern, when false, all the patterns are part of the same MIDI track.
+each new pattern, when false, all the patterns are part of the same MIDI track. If amountOfPatterns is high enough for
+the algorithm to go back down the scale, it is best to have this set to true to avoid conflicts in MIDI notes.
 
 "outputFile" describes the name of the generated MIDI file.
