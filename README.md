@@ -5,6 +5,13 @@ MMG is a simple command-line tool that can generate musical patterns generated b
 The properties of the algorithm can easily be defined in a JSON file (see below), which will then be rendered
 into a MIDI file, which can in turn be opened in DAW music software or be played back by synthesizers.
 
+If you just want to make music and aren't interested in modifying the source code, no worries, there is
+a pre-compiled program in this repository (see the /dist-folder) so you can jump straight to the "How to run" and
+"How to setup the environment properties" sections below, it shouldn't take more than a minute to get running.
+
+About the algorithm
+-------------------
+
 The algorithm is based on "the Molecular Music Box" by Duncan Lockerby.
 
 The rules for the algorithm are as follows :
@@ -47,15 +54,22 @@ use the pre-built .JAR file in the /dist folder.
 How to run
 ----------
 
-MMG is a command line util, and requires a Java Runtime Environment, you can start it like so:
+MMG is a command line util, and requires a Java Runtime Environment (available by default on most operating systems).
+You can run it by opening a terminal / command prompt and typing:
 
     java -jar mmg.jar
 
-However, be sure to supply command line arguments to the input JSON file, like so:
+However, be sure to supply additional arguments to the input JSON file (relative to the location of the mmg.jar-file),
+like so:
 
     java -jar mmg.jar path/to/input.json
 
-The remaining configurations and compositional properties are defined within that JSON file.
+So, assuming you have a file called "composition.json" in the same folder that contains "mmg.jar", you can generate
+your MIDI file instantly by typing:
+
+    java -jar mmg.jar composition.json
+
+The remaining configurations and compositional properties are defined within the JSON file and these are explained below.
 
 How to setup the environment properties
 ---------------------------------------
