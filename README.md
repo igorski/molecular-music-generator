@@ -91,8 +91,8 @@ The JSON (JavaScript Object Notation) looks like the following, note that "tempo
     }
 
 If you are unfamiliar with the JSON format, you can stick to changing the numerical values with any other numerical value
-you like, but be sure that "patternLength", "amountOfPatterns", "timeSignature", "startOctave" and "endOctave" will only
-accept rounded values.
+you like, but be sure that "patternLength", "amountOfPatterns", "timeSignature", "startOctave" and "endOctave" only
+hold rounded values.
 
 "lengths" is a list of two notes that describes the alternate note length/duration to use in the composition.
 "patternLength" describes the length of a single pattern (in measures). Once the generator has generated notes
