@@ -4,5 +4,6 @@ Thumbs.db
 *.iml
 intelliJ project/
 .gradle
+bin/
 build/
 libs/
