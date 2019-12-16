@@ -21,33 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
 */
-package nl.igorski.mmg;
+package nl.igorski.mmg.command;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.VBox;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import nl.igorski.mmg.ui.Controller;
+import nl.igorski.mmg.model.Config;
+import nl.igorski.mmg.definitions.Pitch;
 
-public class MolecularMusicGenerator extends Application {
-    public static void main(String[] args) {
-        launch(args);
-    }
+/**
+ * CalculatePitchCommand will take the given musical scale and
+ * create all pitches (in Hz) for the scale within the given octave range
+ */
+public final class CalculatePitchCommand
+{
+    public static void execute()
+    {
+        final String[] SCALE = Config.SCALE;
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/mmg/application.fxml"));
+        int noteIndex = 0, maxIndex = SCALE.length - 1, octave = Config.MIN_OCTAVE;
 
-        VBox vbox = loader.<VBox>load();
-        Scene scene = new Scene(vbox, 480, 580);
+        for ( int i = noteIndex, l = SCALE.length; i < l; ++i )
+        {
+            Config.pitches.add( Pitch.note( SCALE[ i ], octave ));
 
-        Controller controller = (Controller)loader.getController();
-        controller.setup(primaryStage);
+            // reached end of the note list ? increment octave
 
-        primaryStage.setTitle("Molecular Music Generator");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+            if ( i == maxIndex &&
+                 octave < Config.MAX_OCTAVE )
+            {
+                i = -1; // will be incremented to 0 by loop
+                ++octave;
+            }
+        }
     }
 }

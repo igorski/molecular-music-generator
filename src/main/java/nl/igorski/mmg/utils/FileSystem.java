@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 Igor Zinken
+ * Copyright (c) 2015-2019 Igor Zinken
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,8 @@
 package nl.igorski.mmg.utils;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public final class FileSystem
 {
@@ -59,9 +61,11 @@ public final class FileSystem
 
     public static File createFile( String fileName )
     {
-        if ( !getDirectoryNameFromString( fileName ).equals( RELATIVE_DIR ))
+        String directoryName = getDirectoryNameFromString( fileName );
+        if ( ! Files.exists(Paths.get(directoryName)) &&
+             ! directoryName.equals( RELATIVE_DIR ))
         {
-            final boolean createdDir = createDirectory( getDirectoryNameFromString( fileName ));
+            final boolean createdDir = createDirectory(directoryName);
 
             if ( !createdDir )
                 return null;

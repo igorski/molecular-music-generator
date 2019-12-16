@@ -25,7 +25,6 @@ apply plugin: 'javafx-gradle-plugin'
 
 jfx {
     verbose = true
-    useEnvironmentRelativeExecutables = true
     mainClass = 'nl.igorski.mmg.MolecularMusicGenerator'
     jfxAppOutputDir = "build/jfx/app"
     jfxMainAppJarName = "mmg.jar"
@@ -34,9 +33,9 @@ jfx {
     libFolderName = "lib"
 
     // gradle jfxNative
-    identifier = null  // String - setting this for windows-bundlers makes it possible to generate upgradeable installers (using same GUID)
+    identifier = 'IMMG' // String - setting this for windows-bundlers makes it possible to generate upgradeable installers (using same GUID)
     vendor = 'igorski.nl'
-    nativeOutputDir = 'dist/native'
+    nativeOutputDir = 'dist'
     bundler = "ALL" // set this to some specific, if your don't want all bundlers running, examples "windows.app", "jnlp", ...
     jvmProperties = null // Map<String, String>
     jvmArgs = null // List<String>
@@ -55,7 +54,7 @@ jfx {
     fileAssociations = null // List<Map<String, Object>>
     noBlobSigning = false // when using bundler "jnlp", you can choose to NOT use blob signing
     customBundlers = null // List<String>
-    failOnError = false
+    failOnError = true
     onlyCustomBundlers = false
     skipJNLP = false
     skipNativeVersionNumberSanitizing = false // anything than numbers or dots are removed
@@ -86,13 +85,6 @@ sourceSets {
             srcDir 'libs/android-midi-lib/src'
         }
     }
-}
-
-// Google library to write JSON
-
-dependencies {
-    compile 'com.googlecode.json-simple:json-simple:1.1.1'
-    runtime 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 
 task getMidiLibrary(type: com.palominolabs.gradle.task.git.clone.GitCloneTask) {

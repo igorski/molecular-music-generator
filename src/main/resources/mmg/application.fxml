@@ -1,12 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.text.Text?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="nl.igorski.mmg.ui.Controller" spacing="20">
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="nl.igorski.mmg.ui.Controller"
+      spacing="20"
+>
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
     <children>
-        <Label fx:id="label1" text="Line 1"/>
-        <Label fx:id="label2" text="Line 2"/>
-        <Button fx:id="button1" text="Click me!" onAction="#buttonClicked"/>
+        <!-- tempo and time signature -->
+        <Label fx:id="tempoLabel" text="Tempo" />
+        <Slider fx:id="tempoSlider"
+                min="40" max="300" value="120"
+                showTickLabels="true"
+                showTickMarks="true"
+        />
+        <HBox spacing="20">
+            <Label fx:id="timeSigLabel" text="Time signature" />
+            <TextField fx:id="timeSigUpper" text="4" />
+            <TextField fx:id="timeSigLower" text="4" />
+        </HBox>
+        <!-- note lengths -->
+        <HBox spacing="20">
+            <Label fx:id="noteLengthLabel" text="Note lengths" />
+            <TextField fx:id="firstNoteLength" text="0.25" />
+            <TextField fx:id="secondNoteLength" text="1" />
+        </HBox>
+        <!-- scale -->
+        <HBox spacing="20">
+            <Label fx:id="scaleLabel" text="Scale / notes" />
+            <TextField fx:id="scaleInput" text="E,F#,G,A,B,C,D" />
+        </HBox>
+        <!-- octave range -->
+        <HBox spacing="20">
+            <Label fx:id="octaveLabel" text="Min-Max octave" />
+            <TextField fx:id="octaveLower" text="2" />
+            <TextField fx:id="octaveUpper" text="7" />
+        </HBox>
+        <!-- pattern length -->
+        <HBox spacing="20">
+            <Label fx:id="patternLabel" text="Pattern length" />
+            <TextField fx:id="patternLength" text="4" />
+        </HBox>
+        <!-- pattern amountOfPatterns -->
+        <HBox spacing="20">
+            <Label fx:id="patternAmountLabel" text="Pattern amount" />
+            <TextField fx:id="patternAmount" text="8" />
+        </HBox>
+        <!-- track per pattern -->
+        <HBox spacing="20">
+            <Label fx:id="trackPerPatternLabel" text="MIDI track per pattern" />
+            <CheckBox fx:id="trackPerPattern" />
+        </HBox>
+        <!-- destination file -->
+        <HBox spacing="20">
+            <Label fx:id="outputLabel" text="Output file" />
+            <Button fx:id="outputButton"
+                    text="Select folder"
+                    onAction="#selectOutputDirectory"
+            />
+            <TextField fx:id="filenameInput" text="output.mid" />
+        </HBox>
+        <!-- generate MIDI button -->
+        <Button fx:id="submitButton"
+                text="Generate!"
+                onAction="#generateMIDI"
+                disable="true"
+        />
+        <!-- feedback text -->
+        <Text fx:id="feedback" />
     </children>
 </VBox>
