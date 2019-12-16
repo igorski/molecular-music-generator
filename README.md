@@ -67,26 +67,6 @@ Linux users must compile from source, see the instructions above.
 How to setup the environment properties
 ---------------------------------------
 
-The JSON (JavaScript Object Notation) looks like the following, note that "tempo", "lengths", "patternLength" and
-"amountOfPatterns" are required and cannot be undefined. Note there is a sample input.json file in the /dist-folder.
-
-    {
-        "tempo"             : 165.0,
-        "lengths"           : [ 4, 3 ],
-        "patternLength"     : 4,
-        "amountOfPatterns"  : 8,
-        "timeSignature"     : [ 4, 4 ],
-        "minOctave"         : 2,
-        "maxOctave"         : 7,
-        "scale"             : [ "C", "D", "E", "F", "G", "A", "B" ],
-        "trackPerPattern"   : false,
-        "outputFile"        : "output.mid"
-    }
-
-If you are unfamiliar with the JSON format, you can stick to changing the numerical values with any other numerical value
-you like, but be sure that "patternLength", "amountOfPatterns", "timeSignature", "startOctave" and "endOctave" only
-hold rounded values.
-
 "lengths" is a list of two notes that describes the alternate note length/duration to use in the composition.
 "patternLength" describes the length of a single pattern (in measures). Once the generator has generated notes
 for the given amount of measures, a new pattern will be created, this process will repeat itself until "amountOfPatterns"
