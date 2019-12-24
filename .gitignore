@@ -9,5 +9,6 @@ Thumbs.db
 bin/
 build/
 libs/
+dist/Molecular Music Generator
 dist/*.pkg
 dist/*.app

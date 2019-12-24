@@ -57,6 +57,7 @@ jfx {
     skipNativeVersionNumberSanitizing = false // anything than numbers or dots are removed
     additionalJarsignerParameters = null // List<String>
     skipMainClassScanning = false // set to true might increase build-speed
+    usePatchedJFXAntLib = false // fixes Windows builds using JDK8
 
     skipNativeLauncherWorkaround124 = false
     skipNativeLauncherWorkaround167 = false
