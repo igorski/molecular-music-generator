@@ -79,7 +79,7 @@ public class Controller {
 
     public void setup(Stage stage) {
         directoryChooser = new DirectoryChooser();
-        stage = stage;
+        this.stage = stage;
 
         TextField[] integerInputs = new TextField[] {
             timeSigUpper, timeSigLower, octaveLower, octaveUpper, patternLength, patternAmount

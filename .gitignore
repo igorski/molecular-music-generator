@@ -7,3 +7,5 @@ intelliJ project/
 bin/
 build/
 libs/
+dist/*.pkg
+dist/*.app
