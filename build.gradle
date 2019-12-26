@@ -53,7 +53,7 @@ jfx {
     customBundlers = null // List<String>
     failOnError = true
     onlyCustomBundlers = false
-    skipJNLP = false
+    skipJNLP = true // fixes Windows build
     skipNativeVersionNumberSanitizing = false // anything than numbers or dots are removed
     additionalJarsignerParameters = null // List<String>
     skipMainClassScanning = false // set to true might increase build-speed
