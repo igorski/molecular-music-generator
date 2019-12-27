@@ -10,5 +10,6 @@ bin/
 build/
 libs/
 dist/Molecular Music Generator
+dist/mmg.jar
 dist/*.pkg
 dist/*.app

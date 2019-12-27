@@ -1,9 +1,9 @@
 buildscript {
     dependencies {
-        classpath 'de.dynamicfiles.projects.gradle.plugins:javafx-gradle-plugin:8.8.2'
+        classpath "de.dynamicfiles.projects.gradle.plugins:javafx-gradle-plugin:8.8.2"
 
         // provide Git clone plugin to retrieve MIDI library
-        classpath 'com.palominolabs.gradle.task:gradle-git-clone-task:0.0.2'
+        classpath "com.palominolabs.gradle.task:gradle-git-clone-task:0.0.2"
     }
     repositories {
         jcenter()
@@ -14,50 +14,50 @@ buildscript {
 
 // define plugins to compile Java app using Java FX
 
-apply plugin: 'java'
+apply plugin: "java"
 
 repositories {
     mavenLocal()
     mavenCentral()
 }
 
-apply plugin: 'javafx-gradle-plugin'
+apply plugin: "javafx-gradle-plugin"
 
 jfx {
     verbose = true
-    mainClass = 'nl.igorski.mmg.MolecularMusicGenerator'
-    jfxAppOutputDir = "build/jfx/app"
+    mainClass = "nl.igorski.mmg.MolecularMusicGenerator"
     jfxMainAppJarName = "mmg.jar"
-    deployDir = "dist"
-    useEnvironmentRelativeExecutables = true
+    jfxAppOutputDir = "build/jfx/app"
     libFolderName = "lib"
+    useEnvironmentRelativeExecutables = true
 
     // gradle jfxNative
-    identifier = 'IMMG' // String - setting this for windows-bundlers makes it possible to generate upgradeable installers (using same GUID)
-    vendor = 'igorski.nl'
-    nativeOutputDir = 'dist'
-    bundler = "ALL" // set this to some specific, if your don't want all bundlers running, examples "windows.app", "jnlp", ...
-    jvmProperties = null // Map<String, String>
-    jvmArgs = null // List<String>
-    userJvmArgs = null // Map<String, String>
+    identifier = "IMMG" // setting this for windows-bundlers makes it possible to generate upgradeable installers (using same GUID)
+    vendor = "igorski.nl"
+    deployDir = "src/main/deploy"
+    nativeOutputDir = "dist"
+    bundler = "ALL"          // e.g. "windows.app", "jnlp", ...
+    jvmProperties = null     // Map<String, String>
+    jvmArgs = null           // List<String>
+    userJvmArgs = null       // Map<String, String>
     launcherArguments = null // List<String>
     nativeReleaseVersion = "1.0"
     needShortcut = false
     needMenu = false
-    appName = "Molecular Music Generator" // this is used for files below "src/main/deploy", e.g. "src/main/deploy/package/windows/project.ico"
-    additionalBundlerResources = null // path to some additional resources for the bundlers when creating application-bundle
-    additionalAppResources = null // path to some additional resources when creating application-bundle
+    appName = "Molecular Music Generator" // used for files below "deployDir", e.g. "src/main/deploy/package/windows/appName.ico"
+    additionalBundlerResources = null     // path to some additional resources for the bundlers when creating application-bundle
+    additionalAppResources = null         // path to some additional resources when creating application-bundle
     //secondaryLaunchers = [[appName:"somethingDifferent"], [appName:"somethingDifferent2"]]
     fileAssociations = null // List<Map<String, Object>>
-    noBlobSigning = false // when using bundler "jnlp", you can choose to NOT use blob signing
-    customBundlers = null // List<String>
+    noBlobSigning = false   // when using bundler "jnlp", you can choose to NOT use blob signing
+    customBundlers = null   // List<String>
     failOnError = true
     onlyCustomBundlers = false
-    skipJNLP = true // fixes Windows build
+    skipJNLP = true                           // fixes Windows build
     skipNativeVersionNumberSanitizing = false // anything than numbers or dots are removed
-    additionalJarsignerParameters = null // List<String>
-    skipMainClassScanning = false // set to true might increase build-speed
-    usePatchedJFXAntLib = false // fixes Windows builds using JDK8
+    additionalJarsignerParameters = null      // List<String>
+    skipMainClassScanning = false             // set to true might increase build-speed
+    usePatchedJFXAntLib = false               // fixes Windows builds using JDK8
 
     skipNativeLauncherWorkaround124 = false
     skipNativeLauncherWorkaround167 = false
@@ -79,16 +79,16 @@ jfx {
 sourceSets {
     main {
         java {
-            srcDir 'src/main/java'
-            srcDir 'libs/android-midi-lib/src'
+            srcDir "src/main/java"
+            srcDir "libs/android-midi-lib/src"
         }
     }
 }
 
 task getMidiLibrary(type: com.palominolabs.gradle.task.git.clone.GitCloneTask) {
     dir = file("libs/android-midi-lib")
-    uri = 'https://github.com/LeffelMania/android-midi-lib.git'
-    treeish = 'origin/master'
+    uri = "https://github.com/LeffelMania/android-midi-lib.git"
+    treeish = "origin/master"
     enabled = !dir.exists()
 }
 compileJava.dependsOn getMidiLibrary
