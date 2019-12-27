@@ -48,7 +48,7 @@
         </HBox>
         <!-- octave range -->
         <HBox>
-            <Label fx:id="octaveLabel" text="Min-Max octave" />
+            <Label fx:id="octaveLabel" text="Octave range" />
             <TextField fx:id="octaveLower" text="2" prefWidth="35" />
             <TextField fx:id="octaveUpper" text="7" prefWidth="35" />
         </HBox>

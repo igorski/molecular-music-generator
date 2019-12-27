@@ -70,14 +70,15 @@ Linux users must compile from source by following the instructions listed above.
 How to setup the pattern properties
 -----------------------------------
 
-"lengths" is a list of two notes that describes the alternate note length/duration to use in the composition.
-"pattern length" describes the length of a single pattern (in measures). Once the generator has generated notes
-for the given amount of measures, a new pattern will be created, this process will repeat itself until the configured "amount of patterns" has been reached. For instance: a configuration with a pattern length of 4 and a pattern amount of 8 will result in 32 measures of music.
+"First / second note lengths" define a list of two notes that describes the alternate note length/duration as a fraction of a full measure.
+
+"Pattern length" describes the length of a single pattern (in measures). Once the algorithm has generated notes
+for the given amount of measures, a new pattern will be created. This process will repeat itself until the configured "amount of patterns" has been reached. For instance: a configuration with a pattern length of 4 and a pattern amount of 8 will result in 32 measures of music.
 
 You can alter the time signature to any exotic meter of your liking, the first number is the upper numeral in
 a time signature, e.g. the "3" in 3/4, while the second number is the lower numeral, e.g. the "4" in 3/4.
 
-"min octave" determines the octave at which the composition will start, this cannot be lower than 0. "max octave" determines the octave at which the composition will end, this cannot be higher than 8.
+"Min octave" determines the octave at which the composition will start, this cannot be lower than 0. "Max octave" determines the octave at which the composition will end, this cannot be higher than 8.
 
 The value for "scale" can be changed to any sequence (or length!) of comma separated notes you like, meaning you can use exotic scales, or even determine the movement by creating a sequence in thirds, or by re-introducing a previously defined note, etc. Remember that the scale will be repeated over the determined octave range. You can create sharps and flats too, e.g.: "_Eb_", "_F#_", etc. are all valid input.
 
