@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 Igor Zinken
+ * Copyright (c) 2015-2019 Igor Zinken
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -73,8 +73,7 @@ public final class Pitch
         int i;
         double freq;
         int enharmonic = 0;
-        aNote = aNote.toUpperCase();
-
+        
         // detect flat enharmonic
         i = aNote.indexOf( FLAT );
         if ( i > -1 )

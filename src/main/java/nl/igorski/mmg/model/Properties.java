@@ -25,36 +25,36 @@ package nl.igorski.mmg.model;
 
 import java.util.Vector;
 
-public final class Config
+public final class Properties
 {
-    public static String OUTPUT_FOLDER             = "";
-    public static String OUTPUT_FILENAME           = "output.mid";
+    public String OUTPUT_FOLDER             = "";
+    public String OUTPUT_FILENAME           = "output.mid";
 
-    public static float TEMPO                      = 120f;
-    public static int TIME_SIGNATURE_BEAT_AMOUNT   = 4;
-    public static int TIME_SIGNATURE_BEAT_UNIT     = 4;
+    public float TEMPO                      = 120f;
+    public int TIME_SIGNATURE_BEAT_AMOUNT   = 4;
+    public int TIME_SIGNATURE_BEAT_UNIT     = 4;
 
-    public static float NOTE1_LENGTH               = 4f;
-    public static float NOTE2_LENGTH               = 3f;
-    public static int   PATTERN_LENGTH_IN_BARS     = 4;
-    public static int   AMOUNT_OF_PATTERNS         = 4;
-    public static int   MIN_OCTAVE                 = 2;
-    public static int   MAX_OCTAVE                 = 3;
-    public static String[] SCALE                   = { "E", "F", "G", "A", "B", "C", "D" }; // C major starting on E
+    public float NOTE1_LENGTH               = 4f;
+    public float NOTE2_LENGTH               = 3f;
+    public int   PATTERN_LENGTH_IN_BARS     = 4;
+    public int   AMOUNT_OF_PATTERNS         = 4;
+    public int   MIN_OCTAVE                 = 2;
+    public int   MAX_OCTAVE                 = 3;
+    public String[] SCALE                   = { "E", "F", "G", "A", "B", "C", "D" }; // C major starting on E
 
-    public static boolean UNIQUE_TRACK_PER_PATTERN = false;
+    public boolean UNIQUE_TRACK_PER_PATTERN = false;
 
     // used internally
 
-    public static Vector<Double> pitches = new Vector<Double>();
+    public Vector<Double> pitches = new Vector<Double>();
 
-    public static String valueOf() {
-        return "output folder: " + OUTPUT_FOLDER + " filename: " + OUTPUT_FILENAME + "\n" +
-               Config.TEMPO + " bpm in " + TIME_SIGNATURE_BEAT_AMOUNT + "/" + TIME_SIGNATURE_BEAT_UNIT + " time \n" +
+    public String valueOf() {
+        return "output folder: " + OUTPUT_FOLDER + "/" + OUTPUT_FILENAME + "\n" +
+               TEMPO + " bpm in " + TIME_SIGNATURE_BEAT_AMOUNT + "/" + TIME_SIGNATURE_BEAT_UNIT + " time \n" +
                "with a 1st note length of " + NOTE1_LENGTH + " and a 2nd note length of " + NOTE2_LENGTH + "\n" +
                "for " + AMOUNT_OF_PATTERNS + " patterns with a length of " + PATTERN_LENGTH_IN_BARS + " bars each\n" +
                "and an octave range of " + MIN_OCTAVE + " to " + MAX_OCTAVE + " for the following notes: " +
-               String.join(",", Config.SCALE ) + "\n" +
+               String.join( ", ", SCALE ) + "\n" +
                "rendering a unique track for each pattern " + UNIQUE_TRACK_PER_PATTERN;
     }
 }

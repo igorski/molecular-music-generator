@@ -28,13 +28,12 @@ import com.leff.midi.MidiTrack;
 import com.leff.midi.event.meta.Tempo;
 import com.leff.midi.event.meta.TimeSignature;
 import com.leff.midi.event.meta.TrackName;
-import nl.igorski.mmg.model.Config;
+import nl.igorski.mmg.model.Properties;
 import nl.igorski.mmg.definitions.MIDI;
 import nl.igorski.mmg.definitions.Pitch;
 import nl.igorski.mmg.model.VONote;
 import nl.igorski.mmg.model.VOPattern;
 import nl.igorski.mmg.utils.FileSystem;
-import nl.igorski.mmg.utils.Output;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -43,10 +42,10 @@ import java.util.Vector;
 
 public final class RenderCompositionCommand
 {
-    public static boolean execute()
+    public static boolean execute( Properties props )
     {
         // calculate some constants
-        final float theTempo      = Config.TEMPO; // in BPM
+        final float theTempo      = props.TEMPO; // in BPM
         final int channel         = 0;
 
         // create the MIDI track for the tempo and time signature
@@ -55,7 +54,7 @@ public final class RenderCompositionCommand
 
         // track 0 is typically the tempo map, set tempo and time signature
         TimeSignature ts = new TimeSignature();
-        ts.setTimeSignature( Config.TIME_SIGNATURE_BEAT_AMOUNT, Config.TIME_SIGNATURE_BEAT_UNIT,
+        ts.setTimeSignature( props.TIME_SIGNATURE_BEAT_AMOUNT, props.TIME_SIGNATURE_BEAT_UNIT,
                              TimeSignature.DEFAULT_METER, TimeSignature.DEFAULT_DIVISION );
 
         Tempo t = new Tempo();
@@ -82,7 +81,7 @@ public final class RenderCompositionCommand
 
         long currentPosition   = 0l;
         long currentBarLength  = 0l;
-        float noteLength       = Config.NOTE1_LENGTH;
+        float noteLength       = props.NOTE1_LENGTH;
 
         Vector<VOPattern> patterns = new Vector<VOPattern>();
         Vector<VONote> notes       = new Vector<VONote>();
@@ -91,19 +90,19 @@ public final class RenderCompositionCommand
 
         VOPattern currentPattern = new VOPattern( notes, 0, currentPosition );
 
-        for ( int i = 0, l = Config.pitches.size(); i < l; ++i )
+        for ( int i = 0, l = props.pitches.size(); i < l; ++i )
         {
-            final double pitch = Config.pitches.get( i );
+            final double pitch = props.pitches.get( i );
 
             // swap note length if conflicts with previously added note in other pattern
 
             if ( offsetConflictsWithPattern( currentPosition - currentPattern.offset, patterns ))
             {
                 // swap note length
-                if ( noteLength == Config.NOTE1_LENGTH )
-                    noteLength = Config.NOTE2_LENGTH;
+                if ( noteLength == props.NOTE1_LENGTH )
+                    noteLength = props.NOTE2_LENGTH;
                 else
-                    noteLength = Config.NOTE1_LENGTH;
+                    noteLength = props.NOTE1_LENGTH;
             }
 
             // create new note
@@ -123,7 +122,7 @@ public final class RenderCompositionCommand
 
             // pattern switch ? make it so (this starts the interleaving of the notes and thus, the magic!)
 
-            if (( currentBarLength / MIDI.WHOLE_NOTE ) >= Config.PATTERN_LENGTH_IN_BARS )
+            if (( currentBarLength / MIDI.WHOLE_NOTE ) >= props.PATTERN_LENGTH_IN_BARS )
             {
                 patterns.add( currentPattern );
 
@@ -136,7 +135,7 @@ public final class RenderCompositionCommand
 
             // break the loop when we've rendered the desired amount of patterns
 
-            if ( patterns.size() >= Config.AMOUNT_OF_PATTERNS )
+            if ( patterns.size() >= props.AMOUNT_OF_PATTERNS )
                 break;
 
             // if we have reached the end of the pitch range, start again
@@ -144,7 +143,7 @@ public final class RenderCompositionCommand
 
             if ( i == ( l - 1 ))
             {
-                Collections.reverse( Config.pitches ); // go down the scale
+                Collections.reverse( props.pitches ); // go down the scale
                 i = -1;
             }
         }
@@ -169,7 +168,7 @@ public final class RenderCompositionCommand
 
             // create new track for pattern, if specified
 
-            if ( Config.UNIQUE_TRACK_PER_PATTERN )
+            if ( props.UNIQUE_TRACK_PER_PATTERN )
             {
                 noteTrack = createTrack( "melody" );
                 tracks.add( noteTrack );
@@ -179,7 +178,7 @@ public final class RenderCompositionCommand
         // --- write the MIDI data to a file
 
         MidiFile midi     = new MidiFile( resolution, tracks );
-        final File output = FileSystem.createFile( Config.OUTPUT_FOLDER + File.separator + Config.OUTPUT_FILENAME );
+        final File output = FileSystem.createFile( props.OUTPUT_FOLDER + File.separator + props.OUTPUT_FILENAME );
 
         try
         {
@@ -188,7 +187,7 @@ public final class RenderCompositionCommand
         }
         catch ( Exception e )
         {
-            Output.print( "error occurred while creating MIDI file:" + e.getMessage() );
+            System.out.println( "error occurred while creating MIDI file:" + e.getMessage() );
             return false;
         }
     }

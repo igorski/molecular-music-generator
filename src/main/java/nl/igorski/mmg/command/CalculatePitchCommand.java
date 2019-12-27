@@ -23,7 +23,7 @@
 */
 package nl.igorski.mmg.command;
 
-import nl.igorski.mmg.model.Config;
+import nl.igorski.mmg.model.Properties;
 import nl.igorski.mmg.definitions.Pitch;
 
 /**
@@ -32,22 +32,22 @@ import nl.igorski.mmg.definitions.Pitch;
  */
 public final class CalculatePitchCommand
 {
-    public static void execute()
+    public static void execute( Properties props )
     {
-        final String[] SCALE = Config.SCALE;
+        final String[] SCALE = props.SCALE;
 
-        int noteIndex = 0, maxIndex = SCALE.length - 1, octave = Config.MIN_OCTAVE;
+        int noteIndex = 0, maxIndex = SCALE.length - 1, octave = props.MIN_OCTAVE;
 
         for ( int i = noteIndex, l = SCALE.length; i < l; ++i )
         {
-            Config.pitches.add( Pitch.note( SCALE[ i ], octave ));
+            props.pitches.add( Pitch.note( SCALE[ i ], octave ));
 
             // reached end of the note list ? increment octave
 
             if ( i == maxIndex &&
-                 octave < Config.MAX_OCTAVE )
+                 octave < props.MAX_OCTAVE )
             {
-                i = -1; // will be incremented to 0 by loop
+                i = -1; // restart note generation for next octave
                 ++octave;
             }
         }

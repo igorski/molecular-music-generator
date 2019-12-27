@@ -1,0 +1,13 @@
+.root {
+    -fx-font-size: 14px;
+    -fx-font-family: sans-serif;
+}
+
+.root HBox {
+    -fx-alignment: center-left;
+    -fx-spacing: 10px;
+}
+
+.root Label {
+    -fx-pref-width: 120px;
+}

@@ -41,7 +41,7 @@ public class MolecularMusicGenerator extends Application {
         loader.setLocation(getClass().getResource("/mmg/application.fxml"));
 
         VBox vbox = loader.<VBox>load();
-        Scene scene = new Scene(vbox, 480, 580);
+        Scene scene = new Scene(vbox, 480, 480);
 
         Controller controller = (Controller)loader.getController();
         controller.setup(primaryStage);
