@@ -109,7 +109,7 @@ public final class RenderCompositionCommand
 
             final VONote note = new VONote( Pitch.frequencyToMIDINote( pitch ),
                                             currentPosition,
-                                          ( long )( noteLength * MIDI.WHOLE_NOTE ));
+                                          ( long )( noteLength * MIDI.QUARTER_NOTE ));
 
             // add note to Vector (so it can be re-added in next iterations)
 

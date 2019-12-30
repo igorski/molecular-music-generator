@@ -114,8 +114,8 @@ public class Controller {
         attachTooltip(tempoInput, "The song tempo in BPM");
         attachTooltip(timeSigUpper, "The upper numeral of a time signature (e.g. the \"3\" in \"3/4\")");
         attachTooltip(timeSigLower, "The lower numeral of a time signature (e.g. the \"4\" in \"3/4\")");
-        attachTooltip(firstNoteLength, "The duration (as a fraction of a full measure) of the first note");
-        attachTooltip(secondNoteLength, "The duration (as a fraction of a full measure) of the second note");
+        attachTooltip(firstNoteLength, "The duration (in quarter notes) of the first note");
+        attachTooltip(secondNoteLength, "The duration (in quarter notes) of the second note");
         attachTooltip(scaleInput,
             "Comma separated list of all notes to use for the patterns. This can be\n" +
             "changed to any sequence (or length!) of notes you like, meaning you can\n" +

@@ -18,7 +18,7 @@ The algorithm is based on "the Molecular Music Box" by Duncan Lockerby.
 
 The rules for the algorithm are as follows :
 
- * two different note lengths need to be defined, e.g. "4" and "3"
+ * two different note lengths need to be defined, e.g. "4" and "3" (in quarter notes)
  * a scale needs to be defined, e.g. C major (the white keys on a piano), let's say we start on the E note, the list of
    notes will then contain : E, F, G, A, B, C
  * a pattern length needs to be defined, e.g. 4 bars
@@ -70,7 +70,7 @@ Linux users must compile from source by following the instructions listed above.
 How to setup the pattern properties
 -----------------------------------
 
-"First / second note lengths" define a list of two notes that describes the alternate note length/duration as a fraction of a full measure.
+"First / second note lengths" define a list of two notes that describes the alternate note length/duration as a quarter note.
 
 "Pattern length" describes the length of a single pattern (in measures). Once the algorithm has generated notes
 for the given amount of measures, a new pattern will be created. This process will repeat itself until the configured "amount of patterns" has been reached. For instance: a configuration with a pattern length of 4 and a pattern amount of 8 will result in 32 measures of music.

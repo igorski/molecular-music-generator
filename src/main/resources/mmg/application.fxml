@@ -38,8 +38,8 @@
         <!-- note lengths -->
         <HBox>
             <Label fx:id="noteLengthLabel" text="Note lengths" />
-            <TextField fx:id="firstNoteLength"  text="0.25" prefWidth="50" />
-            <TextField fx:id="secondNoteLength" text="1"    prefWidth="50" />
+            <TextField fx:id="firstNoteLength"  text="2"   prefWidth="50" />
+            <TextField fx:id="secondNoteLength" text="0.5" prefWidth="50" />
         </HBox>
         <!-- scale -->
         <HBox>
