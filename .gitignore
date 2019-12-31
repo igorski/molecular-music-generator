@@ -2,7 +2,14 @@
 Thumbs.db
 *.idea
 *.iml
-intelliJ project/
 .gradle
+.settings
+.classpath
+.project
+bin/
 build/
 libs/
+dist/Molecular Music Generator
+dist/mmg.jar
+dist/*.pkg
+dist/*.app
