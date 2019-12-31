@@ -44,18 +44,24 @@ See https://www.youtube.com/watch?v=3Z8CuAC_-bg for the original video by Duncan
 How to build
 ------------
 
-If you intend to build from source, you will need Gradle 5.x and a Java JDK < 10. The reason for these exact versions being
-that the project is built using JavaFX (separated from the SDK from version 10 onwards) and the [javafx-gradle-plugin](https://github.com/FibreFoX/javafx-gradle-plugin)-dependency (the latter which will be superseded by a different project able to handle newer Java versions once completed). The provided examples have been built using JDK 8 (1.8.0_221) and Gradle 5.2.
+If you intend to build from source, you will need Gradle 5.x and a Java JDK < 10. The reason for these exact versions is
+that the project is built using JavaFX (separated from the SDK from version 10 onwards) and the [javafx-gradle-plugin](https://github.com/FibreFoX/javafx-gradle-plugin). The latter will be superseded by a different project able to handle newer Java versions once completed. The provided examples have been built using JDK 8 (1.8.0_221) and Gradle 5.2.
 
 The following tasks are available for execution through Gradle:
 
+```
 _gradle jfxJar_
-Copiles and packages the application as a .jar file.
+```
+Compiles and packages the application as a .jar file.
 
+```
 _gradle jfxRun_
+```
 Same as above but will additionally launch the application, allowing easy debugging during development.
 
+```
 _gradle jfxNative_
+```
 Compiles the application as a standalone executable wrapped inside an installer for your operating system.
 
 How to setup the pattern properties
