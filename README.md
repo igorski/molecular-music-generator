@@ -50,17 +50,17 @@ that the project is built using JavaFX (separated from the SDK from version 10 o
 The following tasks are available for execution through Gradle:
 
 ```
-_gradle jfxJar_
+gradle jfxJar
 ```
 Compiles and packages the application as a .jar file.
 
 ```
-_gradle jfxRun_
+gradle jfxRun
 ```
 Same as above but will additionally launch the application, allowing easy debugging during development.
 
 ```
-_gradle jfxNative_
+gradle jfxNative
 ```
 Compiles the application as a standalone executable wrapped inside an installer for your operating system.
 
