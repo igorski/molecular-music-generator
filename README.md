@@ -1,15 +1,14 @@
 Molecular Music Generator
 =========================
 
-Molecular Music Generator (MMG) is an application that uses a simple algorithm to
+The Molecular Music Generator (MMG) is an application that uses a simple algorithm to
 generate musical patterns which can be fed to hardware or software instruments.
 
 The properties of the algorithm can easily be defined in a graphical interface, which will then be rendered
 into a MIDI file, which can in turn be opened in DAW music software or be played back by synthesizers.
 
-If you just want to make music and aren't interested in modifying the source code, no worries, there is
-a pre-compiled program in this repository (see the _/dist_-folder) so you can jump straight to the
-"_How to run_" section below.
+If you just want to make music and aren't interested in modifying the source code, no worries, there are
+pre-compiled programs readily available as macOS (_.dmg_) and Windows (_.msi_) installers right [here](https://github.com/igorski/molecular-music-generator/tree/master/dist).
 
 About the algorithm
 -------------------
@@ -45,27 +44,19 @@ See https://www.youtube.com/watch?v=3Z8CuAC_-bg for the original video by Duncan
 How to build
 ------------
 
-You will need Java JDK < 11 and Gradle 5.x, the reason for the versions being that the
-_javafx-gradle-plugin_-dependency will be superseded by a different project that can handle newer Java
-versions (as JavaFX has been separated from the SDK) and Gradle versions. The provided examples have been built using JDK 8 (1.8.0_221) and Gradle 5.2.
+If you intend to build from source, you will need Gradle 5.x and a Java JDK < 10. The reason for these exact versions being
+that the project is built using JavaFX (separated from the SDK from version 10 onwards) and the [javafx-gradle-plugin](https://github.com/FibreFoX/javafx-gradle-plugin)-dependency (the latter which will be superseded by a different project able to handle newer Java versions once completed). The provided examples have been built using JDK 8 (1.8.0_221) and Gradle 5.2.
 
-The followings tasks are available for execution:
+The following tasks are available for execution through Gradle:
 
-_jfxJar_
+_gradle jfxJar_
 Copiles and packages the application as a .jar file.
 
-_jfxRun_
-Same as above but will additionally launch the application.
+_gradle jfxRun_
+Same as above but will additionally launch the application, allowing easy debugging during development.
 
-_jfxNative_
-Compiles the application as a standalone executable for your operating system.
-
-How to run
-----------
-
-In the _/dist_-folder, find the installer executable for your platform (e.g. _molecular-music-generator-1.x.exe_ for Windows and _molecular-music-generator-1.x.dmg_ for macOS).
-
-Linux users must compile from source by following the instructions listed above.
+_gradle jfxNative_
+Compiles the application as a standalone executable wrapped inside an installer for your operating system.
 
 How to setup the pattern properties
 -----------------------------------
