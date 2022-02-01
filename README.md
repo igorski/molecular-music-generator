@@ -6,6 +6,10 @@ generate musical patterns which can be fed to hardware or software instruments.
 The properties of the algorithm can easily be defined in a graphical interface, which will then be rendered
 into a MIDI file, which can in turn be opened in DAW music software or be played back by synthesizers.
 
+## This repository is no longer maintained
+
+You can however download the installers (see below) and start generating music rightaway. However, you could also consider using the [web based version](https://www.igorski.nl/application/molecular-music-generator/) of this application which you can run directly in your browser, including live preview of the generated composition. That version is also [open source](https://github.com/igorski/molecular-music-generator-web). 
+
 ### I want to tinker with this with the least effort!
 
 If you just want to make music and aren't interested in modifying the source code, no worries, there are
